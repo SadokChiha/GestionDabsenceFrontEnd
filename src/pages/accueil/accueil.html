@@ -1,0 +1,18 @@
+<ion-content padding>
+<ion-list>
+  <ion-card *ngFor="let enseignement of enseignements">
+    <ion-card-header style="background: deepskyblue;">
+      {{enseignement.date}}
+    </ion-card-header>
+      <h3>{{enseignement.enseignant.prenom}} {{enseignement.enseignant.nom}}</h3>
+        <p>Seance de {{enseignement.seance.nom}} <br>
+          à la salle {{enseignement.salle.nom}}<br>
+          pour les etudiant {{enseignement.niveau.nom}}</p><br>
+    <ion-item>
+      <ion-label> Absent </ion-label>
+      <ion-toggle color="royal" (ionChange)="AddEnseignant(enseignement)" checked="false" ></ion-toggle>
+    </ion-item>
+  </ion-card>
+  <button ion-button>Valider</button>
+</ion-list>
+</ion-content>
