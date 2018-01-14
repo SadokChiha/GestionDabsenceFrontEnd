@@ -47,7 +47,7 @@ export class AccueilPage implements AfterViewInit{
     for(let ens of this.enseignements){
       if(this.enseignementsAbcent.indexOf(ens)>=0){
         this.pointage.idBase = ens;
-        this.pointage.absent = "absent";
+        this.pointage.absent = "Absent";
         this.pointage.date = d.getFullYear()+"-"+d.getMonth()+1+"-"+d.getDate();
         this.pointageService.putPointage(this.pointage).subscribe();
       }else{

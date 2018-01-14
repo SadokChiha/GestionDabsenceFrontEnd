@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {PointageService} from "../../Services/Pointage.Service";
+import {Pointage} from "../../Models/Pointage";
 
 /**
  * Generated class for the HistoriquePage page.
@@ -12,14 +14,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-historique',
   templateUrl: 'historique.html',
+  providers: [PointageService],
 })
-export class HistoriquePage {
+export class HistoriquePage implements AfterViewInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  myDate: any;
+  pointages: Pointage[];
+  constructor(public navCtrl: NavController, public navParams: NavParams,public pointageService:PointageService) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoriquePage');
+  ngAfterViewInit(): void {
+    this.pointageService.getPointage().subscribe(data => this.pointages = data);
   }
-
+  valide(){
+    this.pointageService.getPointageDate(this.myDate).subscribe(data => this.pointages = data);
+  }
 }

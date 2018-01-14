@@ -10,6 +10,10 @@ export class PointageService {
     return this.http.get<Pointage[]>('http://localhost:8080/ws_spring/pointage');
   }
 
+  getPointageDate(date:any): Observable<Pointage[]>{
+    return this.http.get<Pointage[]>('http://localhost:8080/ws_spring/pointage/dateP/'+date);
+  }
+
   putPointage(pointage: Pointage): Observable<Pointage> {
     return this.http.put<Pointage>('http://localhost:8080/ws_spring/pointage', pointage);
   }

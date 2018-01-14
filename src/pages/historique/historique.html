@@ -15,4 +15,23 @@
 
 <ion-content padding>
 
+  <ion-item>
+    <ion-label floating>Date</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" (ionChange)="valide()" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+
+  <ion-list>
+    <ion-card *ngFor="let pointage of pointages">
+      <ion-card-header style="background: deepskyblue;">
+        <h3>{{pointage.date}}</h3>
+      </ion-card-header>
+      <h3>{{pointage.idBase.enseignant.prenom}} {{pointage.idBase.enseignant.nom}}</h3>
+      <p>Seance de {{pointage.idBase.seance.nom}} <br>
+        à la salle {{pointage.idBase.salle.nom}}<br>
+        pour les etudiant {{pointage.idBase.niveau.nom}}</p><br>
+      <h3 *ngIf="pointage.absent =='Present'" style="background: chartreuse;">{{pointage.absent}}</h3>
+      <h3 *ngIf="pointage.absent =='absent'" style="background: red;">{{pointage.absent}}</h3>
+    </ion-card>
+  </ion-list>
+
 </ion-content>
