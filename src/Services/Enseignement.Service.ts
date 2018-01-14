@@ -6,6 +6,10 @@ import {Enseignement} from "../Models/Enseignement";
 export class EnseignementService {
   constructor(private http: HttpClient) { }
 
+  getEnseignementAujour(): Observable<Enseignement[]> {
+    return this.http.get<Enseignement[]>('http://localhost:8080/ws_spring/enseignement/byDate/');
+  }
+
   getEnseignement(): Observable<Enseignement[]> {
     return this.http.get<Enseignement[]>('http://localhost:8080/ws_spring/enseignement');
   }

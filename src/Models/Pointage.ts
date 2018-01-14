@@ -1,8 +1,9 @@
 import {Enseignement} from "./Enseignement";
 export class Pointage{
   id:number;
-  Date:string;
+  date:string;
   idBase:Enseignement;
+  absent : string;
   constructor (){
     this.idBase = new Enseignement();
   }
